@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta
+      name="description"
+      content="Purpose is a unique and beautiful collection of UI elements that are all flexible and modular. A complete and customizable solution to building the website of your dreams."
+    />
+    <meta name="author" content="Webpixels" />
+    <title>LearnFlow - Update Profile</title>
+
+    <link
+      rel="stylesheet"
+      href="/richtexteditor/richtexteditor/rte_theme_default.css"
+    />
+    <script
+      type="text/javascript"
+      src="/richtexteditor/richtexteditor/rte.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="/richtexteditor/richtexteditor/plugins/all_plugins.js"
+    ></script>
+
+    <!-- Favicon -->
+    <link rel="icon" href="/cstm-assets/logo.svg" type="image/png" />
+    <!-- Font Awesome 5 -->
+    <link
+      rel="stylesheet"
+      href="/libs/@fortawesome/fontawesome-free/css/all.min.css"
+    />
+    <!-- Page CSS -->
+    <link rel="stylesheet" href="/libs/flatpickr/dist/flatpickr.min.css" />
+    <link rel="stylesheet" href="/libs/select2/dist/css/select2.min.css" />
+    <!-- Purpose CSS -->
+    <link rel="stylesheet" href="/css/purpose.css" id="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"/>
+    <link
+      rel="stylesheet"
+      href="/richtexteditor/richtexteditor/rte_theme_default.css"
+    />
+    
+  </head>
+
+  <body>
+    <header class="header header-transparent" id="header-main">
+      <!-- Main navbar -->
+      <%- include('partials/navbar'); %>
+    </header>
+    <div class="main-content">
+      <!-- Header (account) -->
+      <%- include('partials/header'); %>
+      <section class="pt-5 pt-lg-0">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4">
+              <!-- Profile Card -->
+              <%- include('partials/profile'); %>
+            </div>
+            <div class="col-lg-8 mt-lg-5">
+              <!-- Profile settings form -->
+              <div class="actions-toolbar py-2 mb-4">
+                <h5 class="mb-1">Profile Settings</h5>
+                <p class="text-sm text-muted mb-0">
+                  Update your profile information.
+                </p>
+              </div>
+              <form id="profile-settings-form">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-control-label">First Name</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="firstName"
+                        id="firstName"
+                        disabled
+                        placeholder="<%= user.firstName %>"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-control-label">Last Name</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="lastName"
+                        id="lastName"
+                        placeholder="<%= user.lastName %>"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label class="form-control-label">About</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="about"
+                        id="about"
+                        placeholder="Tell me about yourself"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Profile picture -->
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-control-label mb-3"
+                        >Profile Picture</label
+                      >
+                      <input
+                        type="file"
+                        id="profile-picture"
+                        accept="image/*"
+                        class="custom-input-file"
+                      />
+                      <label for="profile-picture">
+                        <i class="fa fa-upload"></i>
+                        <span>Choose a file…</span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-control-label mb-3">Cover Picture</label>
+                      <input
+                        type="file"
+                        id="cover-picture"
+                        accept="image/*"
+                        class="custom-input-file"
+                      />
+                      <label for="cover-picture">
+                        <i class="fa fa-upload"></i>
+                        <span>Choose a file…</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                    <label for="birthdate" class="form-control-label mb-3">Birthdate</label>
+                    <input
+                    type="text"
+                    class="form-control"
+                    id="birthdate"
+                    name="birthdate"
+                    value="<%= user.birthdate %>"
+                    data-provide="datepicker"
+                    data-date-end-date="365d"
+                    />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-control-label mb-3">Gender</label>
+                      <select class="form-control" data-toggle="select" name="gender" id="gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="non-existent">Rather not say</option>
+                      </select>
+                    </div>
+                  </div>
+                <!-- Save changes buttons -->
+                <div class="pt-5 mt-5 delimiter-top text-center">
+                  <input
+                    type="submit"
+                    class="btn btn-sm btn-primary"
+                    value="Save changes"
+                  />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Error Modal -->
+
+    <div
+      class="modal modal-danger"
+      id="errorModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="errorModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title h6" id="modal_title_6">
+              Something went wrong
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="py-3 text-center">
+              <i class="fas fa-frown fa-4x"></i>
+              <h5 class="heading h4 mt-4">We're Sorry</h5>
+              <p>
+                Something went wrong while trying to process your request.
+                Kindly try again later.
+              </p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              onclick="window.location.reload(true)"
+              class="btn btn-sm btn-white"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading Modal -->
+
+    <div
+      class="modal"
+      id="loadingModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+      data-backdrop="static"
+      data-keyboard="false"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="row justify-content-center">
+              <div class="col-auto">
+                <div class="spinner-grow text-" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow text-" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow text-" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </div>
+            </div>
+            <div class="py-3 text-center">
+              <p>Your Profile is getting updated.</p>
+              <p class="font-weight-700">
+                Don't reload or close this window, as it might take a few
+                minutes...
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div
+      class="modal modal-success"
+      id="successModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="modal_success"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title h6" id="modal_title_6">Successful</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="py-3 text-center">
+              <i class="fas fa-check-circle fa-4x"></i>
+              <h5 class="heading h4 mt-4">Profile Updated Successfully</h5>
+              <p>
+                Your profile has been updated successfully. You may close the
+                window now.
+              </p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              onclick="window.location.reload(true)"
+              class="btn btn-sm btn-white"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer-->
+    <%- include('partials/footer'); %>
+    <!-- Scripts -->
+    <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
+    <script src="/js/purpose.core.js"></script>
+    <!-- Page JS -->
+    <script src="/libs/flatpickr/dist/flatpickr.min.js"></script>
+    <script src="/libs/select2/dist/js/select2.min.js"></script>
+    <script src="/libs/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+    <!-- Purpose JS -->
+    <script src="/js/purpose.js"></script>
+    <!-- Demo JS - remove it when starting your project -->
+    <script src="/js/demo.js"></script>
+    <script
+      type="text/javascript"
+      src="/richtexteditor/richtexteditor/rte.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="/richtexteditor/richtexteditor/plugins/all_plugins.js"
+    ></script>
+  </body>
+</html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+<script>
+  const uploadFile = async (file) => {
+    // 1. Get pre-signed url for the file-name file-type
+    // 2. Make a PUT request to that pre-signed with the body = file => Initiate the upload on s3
+
+    try {
+      const urlRes = await fetch(
+        `/upload/presignedUrl?fileName=${file.name}&fileType=${file.type}`,
+        {
+          method: "GET",
+        }
+      );
+
+      const urlData = await urlRes.json();
+
+      const { url, fileName } = urlData;
+
+      const uploadResponse = await fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": file.type,
+        },
+        body: file,
+      });
+
+      return {
+        uploadResponse,
+        fileName,
+      };
+    } catch (error) {
+      console.log(error);
+      $("#loadingModal").modal("hide");
+      $("#errorModal").modal("show");
+    }
+  };
+</script>
+
+<script>
+  const form = document.querySelector("#profile-settings-form");
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    $("#loadingModal").modal("show");
+    $("#successModal").modal("hide");
+    $("#errorModal").modal("hide");
+    // Upload the profile picture first
+    try{
+    const profilePicture = document.querySelector("#profile-picture");
+
+    let profilePictureUploadResponse, profilePictureKeyName;
+
+    if (profilePicture.files.length > 0) {
+      const { uploadResponse, fileName } = await uploadFile(
+        profilePicture.files[0]
+      );
+      profilePictureUploadResponse = uploadResponse;
+      profilePictureKeyName = fileName;
+      // console.log("PROFILE PICTURE", uploadResponse, fileName);
+    }
+    const coverPicture = document.querySelector("#cover-picture");
+
+    let coverPictureUploadResponse, coverPictureKeyName;
+
+    if (coverPicture.files.length > 0) {
+      const { uploadResponse, fileName } = await uploadFile(
+        coverPicture.files[0]
+      );
+      coverPictureUploadResponse = uploadResponse;
+      coverPictureKeyName = fileName;
+      // console.log("COVER PICTURE", uploadResponse, fileName);
+    }
+    // console.log("Gamee" ,profilePictureUploadResponse)
+
+    const newProfile = {
+      firstName: form.firstName?.value,
+      lastName:form.lastName?.value,
+      gender:form.gender?.value,
+      birthdate:form.birthdate?.value,
+      about: form.about?.value,
+    };
+    // console.log(newProfile)
+  
+    if (profilePictureUploadResponse && profilePictureUploadResponse.ok) {
+      newProfile.image = `https://d2jmcxlpgkh5u8.cloudfront.net/${profilePictureKeyName}`;
+    }
+    if (coverPictureUploadResponse && coverPictureUploadResponse.ok) {
+      newProfile.cover = `https://d2jmcxlpgkh5u8.cloudfront.net/${coverPictureKeyName}`;
+    }
+
+    const response = await fetch("/user/update/profile", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newProfile),
+    });
+    const data = await response.json();
+    // console.log("DATA" , data)
+    if(data){
+      $("#loadingModal").modal("hide");
+      $("#successModal").modal("show");
+    }
+  }
+  catch(error){
+    console.log(error);
+    $("#loadingModal").modal("hide");
+    $("#errorModal").modal("show");
+  }
+  });
+</script>
